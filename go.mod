@@ -1,3 +1,3 @@
-module github.com/klauspost/compress
+module github.com/tomcruise81/compress
 
 go 1.15
