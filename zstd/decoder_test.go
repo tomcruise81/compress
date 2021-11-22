@@ -402,15 +402,6 @@ func TestNewDecoderBad(t *testing.T) {
 	testDecoderDecodeAllError(t, "testdata/bad.zip", dec)
 }
 
-func TestNewDecoderLarge(t *testing.T) {
-	testDecoderFile(t, "testdata/large.zip")
-	dec, err := NewReader(nil)
-	if err != nil {
-		t.Fatal(err)
-	}
-	testDecoderDecodeAll(t, "testdata/large.zip", dec)
-}
-
 func TestNewReaderRead(t *testing.T) {
 	dec, err := NewReader(nil)
 	if err != nil {
