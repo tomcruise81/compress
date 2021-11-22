@@ -127,7 +127,7 @@ nfpms:
   -
     file_name_template: "s2_package_{{ .Version }}_{{ .Os }}_{{ .Arch }}"
     vendor: Klaus Post
-    homepage: https://github.com/klauspost/compress
+    homepage: https://github.com/tomcruise81/compress
     maintainer: Klaus Post <klauspost@gmail.com>
     description: S2 Compression Tool
     license: BSD 3-Clause
