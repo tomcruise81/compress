@@ -10,8 +10,8 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/klauspost/compress/flate"
-	"github.com/klauspost/compress/zip"
+	"github.com/tomcruise81/compress/flate"
+	"github.com/tomcruise81/compress/zip"
 )
 
 type inputFn func() ([]byte, error)

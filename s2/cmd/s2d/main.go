@@ -15,9 +15,9 @@ import (
 	"sync"
 	"time"
 
-	"github.com/klauspost/compress/s2"
-	"github.com/klauspost/compress/s2/cmd/internal/filepathx"
-	"github.com/klauspost/compress/s2/cmd/internal/readahead"
+	"github.com/tomcruise81/compress/s2"
+	"github.com/tomcruise81/compress/s2/cmd/internal/filepathx"
+	"github.com/tomcruise81/compress/s2/cmd/internal/readahead"
 )
 
 var (

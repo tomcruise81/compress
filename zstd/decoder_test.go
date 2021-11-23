@@ -27,8 +27,8 @@ import (
 	// "github.com/DataDog/zstd"
 	// zstd "github.com/valyala/gozstd"
 
-	"github.com/klauspost/compress/zip"
-	"github.com/klauspost/compress/zstd/internal/xxhash"
+	"github.com/tomcruise81/compress/zip"
+	"github.com/tomcruise81/compress/zstd/internal/xxhash"
 )
 
 func TestNewReaderMismatch(t *testing.T) {

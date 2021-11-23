@@ -11,9 +11,9 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/klauspost/compress/gzhttp/writer"
-	"github.com/klauspost/compress/gzhttp/writer/gzkp"
-	"github.com/klauspost/compress/gzip"
+	"github.com/tomcruise81/compress/gzhttp/writer"
+	"github.com/tomcruise81/compress/gzhttp/writer/gzkp"
+	"github.com/tomcruise81/compress/gzip"
 )
 
 const (

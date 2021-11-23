@@ -8,8 +8,8 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/klauspost/compress/flate"
-	"github.com/klauspost/compress/gzip"
+	"github.com/tomcruise81/compress/flate"
+	"github.com/tomcruise81/compress/gzip"
 )
 
 func BenchmarkEstimate(b *testing.B) {

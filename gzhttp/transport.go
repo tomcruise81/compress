@@ -9,7 +9,7 @@ import (
 	"net/http"
 	"sync"
 
-	"github.com/klauspost/compress/gzip"
+	"github.com/tomcruise81/compress/gzip"
 )
 
 // Transport will wrap a transport with a custom gzip handler

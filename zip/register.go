@@ -10,7 +10,7 @@ import (
 	"io/ioutil"
 	"sync"
 
-	"github.com/klauspost/compress/flate"
+	"github.com/tomcruise81/compress/flate"
 )
 
 // A Compressor returns a new compressing writer, writing to w.

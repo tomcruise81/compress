@@ -22,9 +22,9 @@ import (
 	"sync"
 	"testing"
 
-	"github.com/klauspost/compress/internal/snapref"
-	"github.com/klauspost/compress/zip"
-	"github.com/klauspost/compress/zstd"
+	"github.com/tomcruise81/compress/internal/snapref"
+	"github.com/tomcruise81/compress/zip"
+	"github.com/tomcruise81/compress/zstd"
 )
 
 const maxUint = ^uint(0)

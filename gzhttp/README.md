@@ -2,9 +2,9 @@ Gzip Middleware
 ===============
 
 This Go package which wraps HTTP *server* handlers to transparently gzip the
-response body, for clients which support it. 
+response body, for clients which support it.
 
-For HTTP *clients* we provide a transport wrapper that will do gzip decompression 
+For HTTP *clients* we provide a transport wrapper that will do gzip decompression
 faster than what the standard library offers.
 
 Both the client and server wrappers are fully compatible with other servers and clients.
@@ -14,12 +14,12 @@ and extends functionality for it.
 
 ## Install
 ```bash
-go get -u github.com/klauspost/compress
+go get -u github.com/tomcruise81/compress
 ```
 
 ## Documentation
 
-[![Go Reference](https://pkg.go.dev/badge/github.com/klauspost/compress/gzhttp.svg)](https://pkg.go.dev/github.com/klauspost/compress/gzhttp)
+[![Go Reference](https://pkg.go.dev/badge/github.com/tomcruise81/compress/gzhttp.svg)](https://pkg.go.dev/github.com/tomcruise81/compress/gzhttp)
 
 
 ## Usage
@@ -28,10 +28,10 @@ There are 2 main parts, one for http servers and one for http clients.
 
 ### Client
 
-The standard library automatically adds gzip compression to most requests 
+The standard library automatically adds gzip compression to most requests
 and handles decompression of the responses.
 
-However, by wrapping the transport we are able to override this and provide 
+However, by wrapping the transport we are able to override this and provide
 our own (faster) decompressor.
 
 Wrapping is done on the Transport of the http client:
@@ -49,7 +49,7 @@ func ExampleTransport() {
 		return
 	}
 	defer resp.Body.Close()
-	
+
 	body, _ := ioutil.ReadAll(resp.Body)
 	fmt.Println("body:", string(body))
 }
@@ -69,7 +69,7 @@ BenchmarkTransport/gzhttp-par-32     	   29113	     36802 ns/op	3548.27 MB/s	   
 BenchmarkTransport/stdlib-par-32     	   16114	     66442 ns/op	1965.38 MB/s	   54971 B/op	      99 allocs/op
 ```
 
-This includes both serving the http request, parsing requests and decompressing. 
+This includes both serving the http request, parsing requests and decompressing.
 
 ### Server
 
@@ -83,7 +83,7 @@ package main
 import (
 	"io"
 	"net/http"
-	"github.com/klauspost/compress/gzhttp"
+	"github.com/tomcruise81/compress/gzhttp"
 )
 
 func main() {
@@ -91,13 +91,13 @@ func main() {
 		w.Header().Set("Content-Type", "text/plain")
 		io.WriteString(w, "Hello, World")
 	})
-    
+
 	http.Handle("/", gzhttp.GzipHandler(handler))
 	http.ListenAndServe("0.0.0.0:8000", nil)
 }
 ```
 
-This will wrap a handler using the default options. 
+This will wrap a handler using the default options.
 
 To specify custom options a reusable wrapper can be created that can be used to wrap
 any number of handlers.
@@ -109,9 +109,9 @@ import (
 	"io"
 	"log"
 	"net/http"
-	
-	"github.com/klauspost/compress/gzhttp"
-	"github.com/klauspost/compress/gzip"
+
+	"github.com/tomcruise81/compress/gzhttp"
+	"github.com/tomcruise81/compress/gzip"
 )
 
 func main() {
@@ -119,13 +119,13 @@ func main() {
 		w.Header().Set("Content-Type", "text/plain")
 		io.WriteString(w, "Hello, World")
 	})
-	
+
 	// Create a reusable wrapper with custom options.
 	wrapper, err := gzhttp.NewWrapper(gzhttp.MinSize(2000), gzhttp.CompressionLevel(gzip.BestSpeed))
 	if err != nil {
 		log.Fatalln(err)
 	}
-	
+
 	http.Handle("/", wrapper(handler))
 	http.ListenAndServe("0.0.0.0:8000", nil)
 }
@@ -174,14 +174,14 @@ BenchmarkGzipHandler_P100k-32     300972        83077         -72.40%
 
 ### Stateless compression
 
-In cases where you expect to run many thousands of compressors concurrently, 
-but with very little activity you can use stateless compression. 
+In cases where you expect to run many thousands of compressors concurrently,
+but with very little activity you can use stateless compression.
 This is not intended for regular web servers serving individual requests.
 
 Use `CompressionLevel(-3)` or `CompressionLevel(gzip.StatelessCompression)` to enable.
 Consider adding a [`bufio.Writer`](https://golang.org/pkg/bufio/#NewWriterSize) with a small buffer.
 
-See [more details on stateless compression](https://github.com/klauspost/compress#stateless-compression).
+See [more details on stateless compression](https://github.com/tomcruise81/compress#stateless-compression).
 
 ### Migrating from gziphandler
 
@@ -191,7 +191,7 @@ When replacing, this can be used to find a replacement.
 * `GzipHandler(h)` -> `GzipHandler(h)` (keep as-is)
 * `GzipHandlerWithOpts(opts...)` -> `NewWrapper(opts...)`
 * `MustNewGzipLevelHandler(n)` -> `NewWrapper(CompressionLevel(n))`
-* `NewGzipLevelAndMinSize(n, s)` -> `NewWrapper(CompressionLevel(n), MinSize(s))` 
+* `NewGzipLevelAndMinSize(n, s)` -> `NewWrapper(CompressionLevel(n), MinSize(s))`
 
 By default, some mime types will now be excluded.
 To re-enable compression of all types, use the `ContentTypeFilter(gzhttp.CompressAllContentTypeFilter)` option.

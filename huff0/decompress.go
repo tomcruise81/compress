@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"io"
 
-	"github.com/klauspost/compress/fse"
+	"github.com/tomcruise81/compress/fse"
 )
 
 type dTable struct {

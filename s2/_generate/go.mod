@@ -1,4 +1,4 @@
-module github.com/klauspost/compress/s2/_generate
+module github.com/tomcruise81/compress/s2/_generate
 
 go 1.13
 

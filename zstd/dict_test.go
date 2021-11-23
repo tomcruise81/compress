@@ -7,7 +7,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/klauspost/compress/zip"
+	"github.com/tomcruise81/compress/zip"
 )
 
 func TestDecoder_SmallDict(t *testing.T) {

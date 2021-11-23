@@ -18,7 +18,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/klauspost/compress/s2"
+	"github.com/tomcruise81/compress/s2"
 )
 
 var (

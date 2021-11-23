@@ -13,7 +13,7 @@ import (
 	"runtime"
 	"testing"
 
-	"github.com/klauspost/compress/gzip"
+	"github.com/tomcruise81/compress/gzip"
 )
 
 func TestTransport(t *testing.T) {

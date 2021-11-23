@@ -14,7 +14,7 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/klauspost/compress/s2"
+	"github.com/tomcruise81/compress/s2"
 )
 
 const (

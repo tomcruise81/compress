@@ -8,7 +8,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/klauspost/compress/zip"
+	"github.com/tomcruise81/compress/zip"
 )
 
 func TestHeader_Decode(t *testing.T) {
